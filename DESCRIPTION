@@ -1,0 +1,17 @@
+Package: simsam
+Title: Simulate Random, Correlated Data from Existing Data Set
+Version: 0.0.1
+Authors@R: c(
+    person("Steve", "Simpson", email = "steven.troy.simpson@gmail.com", role = c("aut", "cre")),
+    person("Tyler", "Rinker", email = "trinker@gmail.com", role = c("aut")),
+    person("CampusLabs", role = "cph")
+    )
+Maintainer: Steve Simpson <steven.troy.simpson@gmail.com>
+Description: Simulates a random, correlated data from the structures of an existing data set.
+Depends: R (>= 3.2.2)
+Imports: corpcor, dplyr, lazyeval, magrittr, parsedate, tidyr
+Suggests: testthat
+Date: 2015-09-18
+License: GPL-2
+LazyData: TRUE
+Roxygen: list(wrap = FALSE)
