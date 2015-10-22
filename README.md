@@ -1,4 +1,3 @@
-**simsam**: somewhere between simulation and sampling.
 
 ![Imgur](http://i.imgur.com/pDvVaAx.png)
 
@@ -28,4 +27,4 @@ You are welcome to:
 <https://bitbucket.com/campuslabs/datascience-packages/simsam/issues>  
 \* send a pull request on:
 <https://bitbucket.com/campuslabs/datascience-packages/simsam/>  
-\* compose a friendly e-mail to: <SSimpson@CampusLabs.com>
+\* compose a friendly e-mail to: <steven.troy.simpson@gmail.com>

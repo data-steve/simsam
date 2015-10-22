@@ -78,7 +78,7 @@ spread_untidy <- function(data) {
           # once we go wide, we need to re-assign levels to factors
           spread_out <- strip_levels(spread_out)
 
-          spread_out[sapply(spread_out, is.character)] <- se_parse_dat(spread_out[sapply(spread_out, is.character)])
+          spread_out[sapply(spread_out, is.character)] <- post_parse_dat(spread_out[sapply(spread_out, is.character)])
           # grp_sprd_to_int(spread_out)
           assign_env(spread_out, tracking_env)
 
