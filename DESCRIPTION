@@ -1,5 +1,5 @@
 Package: simsam
-Title: Simulate Random, Correlated Data from Existing Data Set
+Title: Simulates Random, Correlated Data from Existing Data Set
 Version: 0.0.1
 Authors@R: c(
     person("Steve", "Simpson", email = "steven.troy.simpson@gmail.com", role = c("aut", "cre")),
