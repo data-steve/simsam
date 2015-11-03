@@ -55,6 +55,19 @@ sampler <- function(new_dat, nrows) {
     sapply(sample_datter(num_dat, dbl_index, nrows), as.numeric) %*%
     chol(corpcor::make.positive.definite(cov(num_dat, use = "pairwise.complete.obs")))
 
+    mean_mat <- rep(colMeans(sapply(new_dat, as.numeric)), each = nrows)
+  
+    sim_dat <- mean_mat +
+      matrix(rnorm(nrows * ncol(new_dat)), ncol = ncol(new_dat)) %*%
+      chol(cov(sapply(new_dat, as.numeric), use = "pairwise.complete.obs"))
+  
+      message("This is comparison of column means bet/ simulated and original data.\n ONLY NON-OPEN-TEXT COlUMNS.")
+      their_scipen <- options()$scipen
+      on.exit(options(scipen = their_scipen))
+      options(scipen = 2)
+      compare_col_means <- round(t(rbind(colMeans(sim_dat, na.rm = TRUE), colMeans(num_dat, na.rm = TRUE)) ),3)
+      colnames(compare_col_means) <- c("sim", "orig")
+      print(compare_col_means)
 
   as.data.frame(sim_dat)
 }
