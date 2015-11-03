@@ -54,7 +54,7 @@ sampler <- function(new_dat, nrows) {
   sim_dat <- matrix(rep(colMeans(num_dat, na.rm = TRUE), nrows), ncol=ncol(num_dat), byrow=TRUE) +
     sapply(sample_datter(num_dat, dbl_index, nrows), as.numeric) %*%
     chol(corpcor::make.positive.definite(cov(num_dat, use = "pairwise.complete.obs")))
-
+ 
     mean_mat <- rep(colMeans(sapply(new_dat, as.numeric)), each = nrows)
   
     sim_dat <- mean_mat +
