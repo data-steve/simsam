@@ -205,15 +205,15 @@ ungrouper <- function(dat, grp_spr_dat, index) {
 
 
 # sample the data and take it back to original  data type
-back_to_the_future <- function(ungrouped_dat, grp_spr_dat){
+back_to_the_future <- function(ungrouped_dat, spread_dat){
 
 
   ungrouped_dat %>%
-    back_to_integer(grp_spr_dat) %>%
-    back_to_factor(grp_spr_dat)  %>%
-    back_to_date(grp_spr_dat) %>%
-    back_to_POSIXct(grp_spr_dat) %>%
-    back_to_logical(grp_spr_dat) %>%
+    back_to_integer(spread_dat) %>%
+    back_to_factor(spread_dat)  %>%
+    back_to_date(spread_dat) %>%
+    back_to_POSIXct(spread_dat) %>%
+    back_to_logical(spread_dat) %>%
     expose_undercover_na()
 }
 

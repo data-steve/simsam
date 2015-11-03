@@ -99,7 +99,7 @@ spread_untidy <- function(data) {
 ##########################################
 
 
-grp_sprd_to_int <- function(data) {
+spread_dat_to_int <- function(data) {
 
   . <- NULL
 

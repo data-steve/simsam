@@ -54,12 +54,6 @@ sampler <- function(new_dat, nrows) {
   sim_dat <- matrix(rep(colMeans(num_dat, na.rm = TRUE), nrows), ncol=ncol(num_dat), byrow=TRUE) +
     sapply(sample_datter(num_dat, dbl_index, nrows), as.numeric) %*%
     chol(corpcor::make.positive.definite(cov(num_dat, use = "pairwise.complete.obs")))
- 
-    mean_mat <- rep(colMeans(sapply(new_dat, as.numeric)), each = nrows)
-  
-    sim_dat <- mean_mat +
-      matrix(rnorm(nrows * ncol(new_dat)), ncol = ncol(new_dat)) %*%
-      chol(cov(sapply(new_dat, as.numeric), use = "pairwise.complete.obs"))
   
       message("This is comparison of column means bet/ simulated and original data.\n ONLY NON-OPEN-TEXT COlUMNS.")
       their_scipen <- options()$scipen
@@ -73,13 +67,13 @@ sampler <- function(new_dat, nrows) {
 }
 
 
-the_sampler <- function(grp_spr_dat, nrows, index){
+the_sampler <- function(spread_dat, nrows, index){
 
-  grp_spr_dat %>%
-    grp_sprd_to_int() %>%
+  spread_dat %>%
+    spread_dat_to_int() %>%
     sampler(nrows) %>%
-    ungrouper(grp_spr_dat, index) %>%
-    back_to_the_future(grp_spr_dat)
+    ungrouper(spread_dat, index) %>%
+    back_to_the_future(spread_dat)
 }
 
 
