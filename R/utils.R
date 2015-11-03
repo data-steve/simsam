@@ -6,10 +6,14 @@
 ###############################
 
 
-non_text_indices <- function(orig_dat){
-  which(!is.na(colMeans(suppressWarnings(sapply(orig_dat, as.numeric)), na.rm = TRUE)))
-}
+# non_text_indices <- function(orig_dat){
+#   which(!is.na(colMeans(suppressWarnings(sapply(orig_dat, as.numeric)), na.rm = TRUE)))
+# }
 
+non_text_indices <- function(orig_dat){
+    sort(unique(c(which(!is.na(colMeans(suppressWarnings(sapply(orig_dat, as.numeric)), na.rm = TRUE))), 
+                  which(sapply(orig_dat, is, "email")))))
+}
 
 ## Not currently used
 put_back_text <- function(sim_dat, orig_dat) {
@@ -99,7 +103,7 @@ get_class <- function(new_dat) {
 data_clean_up <- function(dat) {
 
   tracking_env <- attr(dat, "tracking_env")
-
+  # browser()
   non_tidys <- sapply(dat, is, "non_tidy")
 
   if (!any(non_tidys)) {
