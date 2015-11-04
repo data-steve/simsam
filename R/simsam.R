@@ -20,7 +20,7 @@
 simsam <- function(orig_dat, nrows, your_choice_of_NA = NULL){
 
   if(!is.null(your_choice_of_NA)){
-    dat[dat == your_choice_of_NA] <- NA
+    orig_dat[orig_dat == your_choice_of_NA] <- NA
   }
 
   orig_dat %>%
@@ -40,7 +40,6 @@ simsam <- function(orig_dat, nrows, your_choice_of_NA = NULL){
   redundant_cols_dat %>%
     remaining_guid_emails_to_factor() %>%
     spread_untidy()  -> spread_dat
-
 
     spread_out <- list(rep(NA, length(spread_dat)))
 	for (i in seq_along(spread_dat)) {
