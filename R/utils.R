@@ -258,7 +258,7 @@ convert_email <- function(col) {
 # }
 
 non_text_indices <- function(orig_dat){
-    sort(unique(c(which(!is.na(colMeans(suppressWarnings(sapply(orig_dat, as.numeric)), na.rm = TRUE))), 
+    sort(unique(c(which(!is.na(colMeans(suppressWarnings(sapply(orig_dat, as.numeric)), na.rm = TRUE))),
                   which(sapply(orig_dat, is, "email")))))
 }
 
@@ -388,7 +388,7 @@ data_clean_up <- function(dat) {
 #  1. One Answer Cols: For one project, the column value never changes
 #  2. Redundant Cols : Several one answer columns, e.g. project name, project start date, project owner ....
 #  3. Project ID: in a data set containing multiple projects,
-#                  when you need to clean up an untidy variable, (data gather long too many times) 
+#                  when you need to clean up an untidy variable, (data gather long too many times)
 #                  Project ID, identifies where the project starts and ends, so that you can spread separately
 ##########################################
 
@@ -760,7 +760,7 @@ sampler <- function(new_dat, nrows) {
   sim_dat <- matrix(rep(colMeans(num_dat, na.rm = TRUE), nrows), ncol=ncol(num_dat), byrow=TRUE) +
     sapply(sample_datter(num_dat, dbl_index, nrows), as.numeric) %*%
     chol(corpcor::make.positive.definite(cov(num_dat, use = "pairwise.complete.obs")))
-  
+
       message("This is comparison of column means bet/ simulated and original data.\n ONLY NON-OPEN-TEXT COlUMNS.")
       their_scipen <- options()$scipen
       on.exit(options(scipen = their_scipen))
@@ -998,7 +998,8 @@ back_to_the_future <- function(ungrouped_dat, spread_dat){
     back_to_date(spread_dat) %>%
     back_to_POSIXct(spread_dat) %>%
     back_to_logical(spread_dat) %>%
-    expose_undercover_na()
+    expose_undercover_na() %>%
+    unlist_df_list_if_length_one()
 }
 
 expose_undercover_na <- function(dat){
@@ -1013,4 +1014,11 @@ expose_undercover_na <- function(dat){
   dat
 }
 
+unlist_df_list_if_length_one <- function(dat) {
+  if(length(dat)==1){
+    dat[[1]]
+  } else {
+    dat
+  }
+}
 
