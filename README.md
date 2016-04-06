@@ -17,7 +17,7 @@ To download the development version of **simsam**:
 
 Use the **devtools** package to install the development version:
 
-    devtools::install_github("steventsimpson/simsam")
+    devtools::install_github("data-steve/simsam")
 
 Contact
 =======
